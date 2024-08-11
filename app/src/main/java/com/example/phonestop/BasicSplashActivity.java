@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import java.util.HashMap;
 
 public class BasicSplashActivity extends AppCompatActivity {
     private AppCompatImageView splash_IMG_logo;
@@ -67,7 +65,7 @@ public class BasicSplashActivity extends AppCompatActivity {
     }
 
     private void transactToMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
 

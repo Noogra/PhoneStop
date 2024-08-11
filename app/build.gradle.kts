@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -32,7 +33,7 @@ android {
 }
 
 dependencies {
-
+    implementation (libs.recyclerview)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -40,4 +41,16 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+
+    //Firebase:
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+
+    //Firebase Authentication:
+    implementation (libs.firebase.ui.auth)
+
+    //Glide
+    implementation(libs.glide)
+
 }
