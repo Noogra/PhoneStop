@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
-import java.util.HashMap;
-
 public class BasicSplashActivity extends AppCompatActivity {
     private AppCompatImageView splash_IMG_logo;
     @Override

@@ -1,14 +1,10 @@
 package com.example.phonestop.Data;
 
 import com.example.phonestop.Models.Category;
-import com.example.phonestop.R;
-
-import org.checkerframework.checker.units.qual.C;
-
 import java.util.ArrayList;
 
 public class DataManager {
-    public Integer product_id = 0;
+    //public Integer product_id = 0;
     public static ArrayList<Category> getCategories(){
         ArrayList<Category> categories = new ArrayList<>();
 

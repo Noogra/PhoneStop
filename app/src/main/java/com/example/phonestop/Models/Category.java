@@ -1,16 +1,10 @@
 package com.example.phonestop.Models;
-
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-
-import com.example.phonestop.R;
-
 import java.util.HashMap;
 
 public class Category {
     private HashMap<Integer, Product> allProducts = new HashMap<>();
     private String name = "";
-    public String img;
+    public String img = "";
 
     public String getImg() {
         return img;
