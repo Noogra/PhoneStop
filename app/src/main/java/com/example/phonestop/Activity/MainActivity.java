@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
     private FragmentManager fragmentManager;
     private Fragment currentFragment;
     private ManagmentCart managmentCart;
-    HashMap<String, ManagmentCart> userCarts;
 
     private TabLayout.OnTabSelectedListener tabSelectedListener;
 

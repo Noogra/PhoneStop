@@ -115,7 +115,7 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-
+                managmentCart.savePurchase();
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.fragment, new AfterPurchaseFragment());
                 ft.addToBackStack(null);

@@ -10,6 +10,7 @@ import com.example.phonestop.Models.Product;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,11 +18,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ManagmentCart {
     private static ManagmentCart instance;
     private static ArrayList<Product> product_list;
     private static Context context;
+    private HashMap<String, ArrayList<Product>> purchasedCart;
 
     //Firebase
     private DatabaseReference databaseReference;
@@ -31,7 +34,8 @@ public class ManagmentCart {
         product_list = new ArrayList<>();
         context = other.getApplicationContext();
         // Initialize Firebase Database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference("cartProd");
+        purchasedCart = new HashMap<>();
+        //databaseReference = FirebaseDatabase.getInstance().getReference("cartProd");
         // In CartManager constructor or method:
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();  // Get the current user's ID
         databaseReference = FirebaseDatabase.getInstance().getReference("cartProd").child(userId);
@@ -47,6 +51,15 @@ public class ManagmentCart {
         product_list = new ArrayList<>();
     }
     // Save the cart to Firebase
+
+    public void savePurchase(){
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser != null){
+            purchasedCart.put(firebaseUser.getUid(), product_list);
+            DatabaseReference saveRef = FirebaseDatabase.getInstance().getReference("purchasedCarts");
+            saveRef.setValue(purchasedCart);
+        }
+    }
     public void saveCartToFirebase() {
         databaseReference.setValue(product_list).addOnCompleteListener(new OnCompleteListener<Void>() {
 
