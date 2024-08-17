@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.phonestop.Activity.MainActivity;
 import com.example.phonestop.Adapters.CartAdapter;
+import com.example.phonestop.AfterPurchaseFragment;
 import com.example.phonestop.Helper.ManagmentCart;
 import com.example.phonestop.Interface.ChangeNumberItemsListener;
 import com.example.phonestop.Models.Product;
@@ -107,6 +109,19 @@ public class CartFragment extends Fragment {
         backButton.setOnClickListener(v -> {
             // Simulate the back press
             handleBackPress();
+        });
+
+        checkOutBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.fragment, new AfterPurchaseFragment());
+                ft.addToBackStack(null);
+                ft.commit();
+                ManagmentCart.getInstance(getActivity()).initManagmentCart(getActivity());
+            }
         });
     }
 
