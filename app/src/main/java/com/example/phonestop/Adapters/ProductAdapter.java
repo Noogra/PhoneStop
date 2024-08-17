@@ -42,7 +42,7 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductAdapter.Product
         ImageLoader.getInstance().load(product.getImg_url(), holder.product_img_id);
         holder.product_name_text_id.setText(product.getName());
         holder.product_description_text_id.setText(product.getDescription());
-        holder.product_price_text_id.setText("$" + product.getPrice().toString());
+        holder.product_price_text_id.setText(product.getPrice().toString() + " NIS");
     }
 
     @Override

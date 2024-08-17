@@ -63,6 +63,15 @@
             android:layout_marginVertical="20dp"
             android:textColor="@color/black"
             android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/add_to_cart_BTN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ADD TO CART!"
+            android:background="@drawable/green_button_bg"
+            android:layout_marginVertical="30dp"
+            android:layout_marginHorizontal="@dimen/poster_vertical_margin"/>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

@@ -42,6 +42,10 @@ public class ManagmentCart {
         }
         return instance;
     }
+
+    public void initManagmentCart(Context context){
+        product_list = new ArrayList<>();
+    }
     // Save the cart to Firebase
     public void saveCartToFirebase() {
         databaseReference.setValue(product_list).addOnCompleteListener(new OnCompleteListener<Void>() {

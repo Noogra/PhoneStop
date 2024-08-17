@@ -42,8 +42,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         Product product = getItem(position);
         ImageLoader.getInstance().load(product.getImg_url(), holder.product_img_id);
         holder.cart_title_text.setText(product.getName());
-        holder.cart_item_price_text.setText("$"+product.getPrice().toString());
-        holder.cart_feeEachItem_text.setText("$"+ Math.round((products.get(position).getNumberinCart() * products.get(position).getPrice())));
+        holder.cart_item_price_text.setText(product.getPrice().toString() + " nis");
+        holder.cart_feeEachItem_text.setText(Math.round((products.get(position).getNumberinCart() * products.get(position).getPrice())) + " nis");
         holder.cart_item_num_text.setText(String.valueOf(products.get(position).getNumberinCart()));
 
         holder.plusCartBtn.setOnClickListener(v -> ManagmentCart.getInstance(v.getContext().getApplicationContext()).plusItem(products, position, () -> {

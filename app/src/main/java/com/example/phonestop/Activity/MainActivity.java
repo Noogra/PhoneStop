@@ -34,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity implements CategoryFragment.CategoryClickHandler, ProductFragment.ProductClickHandler{
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
     private FragmentManager fragmentManager;
     private Fragment currentFragment;
     private ManagmentCart managmentCart;
+    HashMap<String, ManagmentCart> userCarts;
+
     private TabLayout.OnTabSelectedListener tabSelectedListener;
 
     @Override
@@ -62,26 +65,20 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
         findViews();
         initViews();
 
-        // Assuming the user is already authenticated
         loadCart();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // Save the cart to Firebase when the activity is paused
         managmentCart.saveCartToFirebase();
     }
 
-    public void saveUserToDB(){
-
-    }
 
     private void loadCart() {
         managmentCart.loadCartFromFirebase(new ManagmentCart.CartLoadCallback() {
             @Override
             public void onCartLoaded(ArrayList<Product> products) {
-                // Get the CartFragment by its container ID
                 CartFragment cartFragment = (CartFragment) getSupportFragmentManager().findFragmentById(R.id.cartFragment);
                 if (cartFragment != null) {
                     cartFragment.updateCartUI(products); // Call the method in CartFragment
@@ -90,14 +87,12 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
 
             @Override
             public void onCartLoadFailed(Exception e) {
-                // Handle the error, maybe show a message to the user
                 Toast.makeText(MainActivity.this, "Failed to load cart: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
 
-    // Provide a getter for the listener
     public TabLayout.OnTabSelectedListener getTabSelectedListener() {
         return tabSelectedListener;
     }
@@ -145,18 +140,7 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
                         break;
 
                     case 2: //User tab
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                        if(user == null){
-                            //log/sign in
-                            //signIn();
-                        }
-                        else {
-                            //user info fragment
-                            //transactToMainActivity();
                             fragment = new UserFragment();
-                        }
-
                         break;
                 }
                 getSupportFragmentManager()

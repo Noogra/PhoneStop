@@ -32,10 +32,8 @@ public class CartFragment extends Fragment {
     private RecyclerView cartView;
     private TextView totalFeeTxt;
     private TextView deliveryTxt;
-    private TextView taxTxt;
     private TextView totalTxt;
     private AppCompatButton checkOutBTN;
-    private double tax;
     private ScrollView scrollViewCart;
     private ManagmentCart managmentCart;
 
@@ -59,15 +57,12 @@ public class CartFragment extends Fragment {
     }
 
     private void calculatorCart() {
-        double percentTax = 0.02;
-        double delivery = 10;
-        tax = Math.round((managmentCart.getTotalFee()*percentTax*100.0))/100.0;
-        double total = Math.round((managmentCart.getTotalFee()+tax+delivery)*100)/100;
+        double delivery = 49;
+        double total = Math.round((managmentCart.getTotalFee()+delivery)*100)/100;
         double productTotal = Math.round(managmentCart.getTotalFee()*100)/100;
-        totalFeeTxt.setText("$" + productTotal);
-        taxTxt.setText("$" + tax);
-        deliveryTxt.setText("$" + delivery);
-        totalTxt.setText("$" + total);
+        totalFeeTxt.setText(productTotal + " nis");
+        deliveryTxt.setText(delivery + "nis");
+        totalTxt.setText(total + "nis");
     }
 
     public void updateCartUI(ArrayList<Product> products){
@@ -102,9 +97,8 @@ public class CartFragment extends Fragment {
         cartView = view.findViewById(R.id.cartView);
         totalFeeTxt = view.findViewById(R.id.totalFeeTxt);
         deliveryTxt = view.findViewById(R.id.deliveryTxt);
-        taxTxt = view.findViewById(R.id.taxTxt);
-        scrollViewCart = view.findViewById(R.id.scrollViewCart);
         totalTxt = view.findViewById(R.id.totalTxt);
+        scrollViewCart = view.findViewById(R.id.scrollViewCart);
         checkOutBTN = view.findViewById(R.id.checkOutBTN);
         // Get the TabLayout from the parent activity
         tabLayout = getActivity().findViewById(R.id.tablayout);
