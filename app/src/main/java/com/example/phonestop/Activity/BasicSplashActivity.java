@@ -1,4 +1,4 @@
-package com.example.phonestop;
+package com.example.phonestop.Activity;
 
 import android.animation.Animator;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+
+import com.example.phonestop.R;
 
 public class BasicSplashActivity extends AppCompatActivity {
     private AppCompatImageView splash_IMG_logo;

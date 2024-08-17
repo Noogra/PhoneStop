@@ -7,8 +7,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/category_card_id"
-        android:layout_width="@dimen/poster_width"
-        android:layout_height="@dimen/poster_width"
+        android:layout_width="390dp"
+        android:layout_height="250dp"
         android:layout_marginVertical="@dimen/poster_vertical_margin"
         android:layout_marginHorizontal="@dimen/poster_vertical_margin"
         android:elevation="@dimen/poster_elevation"
@@ -22,22 +22,23 @@
         <TextView
             android:id="@+id/category_name_id"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="TEST"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/category_img_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:scaleType="fitCenter"
-            tools:src="@drawable/iphone15pro" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/category_img_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:scaleType="fitCenter"
+                tools:src="@drawable/iphone15pro" />
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

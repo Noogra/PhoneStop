@@ -1,20 +1,43 @@
 package com.example.phonestop.Models;
-import java.util.HashMap;
 
-public class Category {
-    private HashMap<Integer, Product> allProducts = new HashMap<>();
+import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+public class Category implements Parcelable {
     private String name = "";
-    public String img = "";
+    private Drawable drawable_img = null;
+    private boolean isSubCategory = false;
 
-    public String getImg() {
-        return img;
+
+    protected Category(Parcel in) {
+        name = in.readString();
+        isSubCategory = in.readByte() != 0;
     }
 
-    public Category setImg(String img) {
-        this.img = img;
-        return this;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeByte((byte) (isSubCategory ? 1 : 0));
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        @Override
+        public Category createFromParcel(Parcel in) {
+            return new Category(in);
+        }
+
+        @Override
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -25,16 +48,24 @@ public class Category {
         return this;
     }
 
-    public HashMap<Integer, Product> getAllProducts() {
-        return allProducts;
-    }
-
-    public Category setAllProducts(HashMap<Integer, Product> allProducts) {
-        this.allProducts = allProducts;
-        return this;
-    }
-
     public Category(){
     }
 
+    public Drawable getDrawable_img() {
+        return drawable_img;
+    }
+
+    public Category setDrawable_img(Drawable drawable_img) {
+        this.drawable_img = drawable_img;
+        return this;
+    }
+
+    public boolean isSubCategory() {
+        return isSubCategory;
+    }
+
+    public Category setSubCategory(boolean subCategory) {
+        isSubCategory = subCategory;
+        return this;
+    }
 }

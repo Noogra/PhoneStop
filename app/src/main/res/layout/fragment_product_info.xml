@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginVertical="@dimen/poster_vertical_margin">
+
+        <TextView
+            android:id="@+id/product_info_name_txt_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:layout_marginVertical="20dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textAlignment="center"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/product_info_img_height"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_marginHorizontal="@dimen/poster_vertical_margin"
+            android:elevation="@dimen/poster_elevation"
+            app:cardCornerRadius="@dimen/poster_corner_radius"
+            app:cardElevation="@dimen/poster_elevation">
+
+            <ImageView
+                android:id="@+id/product_info_img_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cat_protection" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/product_info_descr_txt_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/poster_vertical_margin"
+            android:textColor="@color/black"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/product_info_price_txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Price"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="@dimen/poster_vertical_margin"
+            android:layout_marginVertical="20dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,4 +1,4 @@
-package com.example.phonestop;
+package com.example.phonestop.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,18 +7,20 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.phonestop.R;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-
     // See: https://developer.android.com/training/basics/intents/result
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
@@ -46,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void transactToMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
@@ -67,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         signInLauncher.launch(signInIntent);
     }
+
 
     private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
         IdpResponse response = result.getIdpResponse();

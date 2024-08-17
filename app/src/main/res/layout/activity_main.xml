@@ -5,34 +5,59 @@
     android:id="@+id/settings_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_launcher_background">
+    android:background="@color/brown_50">
+
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:id="@+id/main_IMG_logo"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/phonestop_icon" />
 
-    <androidx.cardview.widget.CardView
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_below="@id/main_IMG_logo"
+        android:background="@drawable/shaded_divider"/>
+
+    <FrameLayout
+        android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="12dp"
-        >
+        android:layout_marginBottom="46dp"
+        android:layout_below="@id/divider1" />
 
-        <fragment
-            android:id="@+id/fragment"
-            android:name="com.example.phonestop.Fragmentation.CategoryFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </androidx.cardview.widget.CardView>
-
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#424242"
+        android:layout_alignParentBottom="true"
+        app:tabIndicatorColor="@color/white"
+        app:tabSelectedTextColor="@color/white">
 
 
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/main_home_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/main_cart_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cart" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/main_user_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User" />
+
+    </com.google.android.material.tabs.TabLayout>
 </RelativeLayout>
