@@ -70,6 +70,5 @@ public class ReceiptFragment extends Fragment {
             receipt_total_price_txt.setText(String.valueOf(order.getTotal_price()) + " nis");
             receipt_date_txt_id.setText(order.getDate());
         }
-
     }
 }
