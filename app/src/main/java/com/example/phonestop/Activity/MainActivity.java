@@ -22,6 +22,7 @@ import com.example.phonestop.Fragments.UserFragment;
 import com.example.phonestop.Helper.ManagmentCart;
 import com.example.phonestop.Models.Category;
 import com.example.phonestop.Models.Product;
+import com.example.phonestop.Models.User;
 import com.example.phonestop.R;
 import com.example.phonestop.Fragments.CartFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -46,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
     private FragmentManager fragmentManager;
     private Fragment currentFragment;
     private ManagmentCart managmentCart;
-
     private TabLayout.OnTabSelectedListener tabSelectedListener;
 
     @Override
@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
         }
         findViews();
         initViews();
-
         loadCart();
     }
 
@@ -71,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
     protected void onPause() {
         super.onPause();
         managmentCart.saveCartToFirebase();
+        managmentCart.saveUserToDataBase();
     }
 
 
@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
         });
     }
 
-
     public TabLayout.OnTabSelectedListener getTabSelectedListener() {
         return tabSelectedListener;
     }
@@ -99,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
     private void initViews() {
         tabSelectedListener = new TabLayout.OnTabSelectedListener()
         {
+
+
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 Fragment fragment = null;
@@ -125,6 +126,25 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
+                Fragment fragment = null;
+                switch(tab.getPosition()){
+                    case 0: //Home tab
+                        fragment = CategoryFragment.newInstance(DataManager.getDomainCategories());
+                        break;
+                    case 1: //Cart tab
+                        fragment = new CartFragment();
+                        break;
+
+                    case 2: //User tab
+                        fragment = new UserFragment();
+                        break;
+                }
+                FragmentManager fm = getSupportFragmentManager();
+
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.fragment, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
             }
 
             @Override
@@ -152,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
         tabLayout.addOnTabSelectedListener(tabSelectedListener);
 
     }
+
 
     private void findViews() {
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
@@ -187,4 +208,5 @@ public class MainActivity extends AppCompatActivity implements CategoryFragment.
         ft.addToBackStack(null);
         ft.commit();
     }
+
 }

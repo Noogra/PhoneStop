@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.example.phonestop.Activity.MainActivity;
 import com.example.phonestop.Adapters.CartAdapter;
-import com.example.phonestop.AfterPurchaseFragment;
 import com.example.phonestop.Helper.ManagmentCart;
 import com.example.phonestop.Interface.ChangeNumberItemsListener;
 import com.example.phonestop.Models.Product;
@@ -115,12 +114,12 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                managmentCart.savePurchase();
+                //managmentCart.savePurchase();
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.fragment, new AfterPurchaseFragment());
+                ft.replace(R.id.fragment, new OrderInfoFragment());
                 ft.addToBackStack(null);
                 ft.commit();
-                ManagmentCart.getInstance(getActivity()).initManagmentCart(getActivity());
+                //ManagmentCart.getInstance(getActivity()).initManagmentCart(getActivity());
             }
         });
     }

@@ -7,4 +7,6 @@
     <color name="lightblue_100">#E1F5FE</color>
     <color name="bluegrey_300">#B0BEC5</color>
     <color name="green_700">#388E3C</color>
+    <color name="grey_500">#9E9E9E</color>
+
 </resources>
